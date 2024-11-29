@@ -158,3 +158,7 @@ ftp localhost
   - Pastikan layanan ProFTPD sedang berjalan.
 
 ---
+
+## **Dokumentasi Berhasil**
+![Dokumentasi Berhasil](image.png)
+
