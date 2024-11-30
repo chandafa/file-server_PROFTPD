@@ -46,6 +46,13 @@ sudo nano /etc/proftpd/proftpd.conf
 
 Lakukan perubahan berikut:
 ```conf
+
+# Mengizinkan lebih banyak proses
+MaxInstances 50
+
+# Mode pasif konfigurasi
+PassivePorts 30000 35000
+
 # Root direktori default untuk pengguna
 DefaultRoot ~
 
@@ -75,7 +82,7 @@ sudo systemctl restart proftpd
 ### **Langkah 3: Buat Pengguna FTP**
 Tambahkan pengguna untuk akses FTP:
 ```bash
-sudo adduser ftpuser
+sudo adduser ftpserver
 ```
 
 Setel password untuk pengguna selama proses tersebut. Pengguna ini akan memiliki akses ke direktori home-nya untuk FTP.
@@ -83,8 +90,8 @@ Setel password untuk pengguna selama proses tersebut. Pengguna ini akan memiliki
 ### **Langkah 4: Buat Direktori FTP (Opsional)**
 Buat direktori khusus untuk file FTP:
 ```bash
-sudo mkdir /home/ftpuser
-sudo chown ftpuser:ftpuser /home/ftpuser
+sudo mkdir /home/ftpserver
+sudo chown ftpserver:ftpserver /home/ftpserver
 ```
 
 ---
@@ -96,7 +103,7 @@ Untuk menguji server FTP secara lokal, gunakan perintah berikut:
 ```bash
 ftp localhost
 ```
-- Masukkan username (`ftpuser`) dan password yang telah dibuat.
+- Masukkan username (`ftpserver`) dan password yang telah dibuat.
 
 ### **Langkah 2: Akses FTP dari Perangkat Lain**
 1. **Cek Alamat IP Debian Server:**
@@ -110,7 +117,8 @@ ftp localhost
 
 3. **Buka Port 21 di Firewall (Jika Diperlukan):**
    ```bash
-   sudo ufw allow 21
+   sudo ufw allow 21/tcp
+   sudo ufw allow 30000:35000/tcp
    sudo ufw reload
    ```
 
@@ -118,7 +126,7 @@ ftp localhost
    - Di perangkat lain, instal aplikasi FTP client seperti **FileZilla** atau **WinSCP**.
    - Hubungkan dengan parameter berikut:
      - **Host:** `192.168.1.10` (IP Debian Server)
-     - **Username:** `ftpuser`
+     - **Username:** `ftpserver`
      - **Password:** (yang telah dibuat)
      - **Port:** `21`
 
