@@ -46,7 +46,6 @@ sudo nano /etc/proftpd/proftpd.conf
 
 Lakukan perubahan berikut:
 ```conf
-
 # Mengizinkan lebih banyak proses
 MaxInstances 50
 
