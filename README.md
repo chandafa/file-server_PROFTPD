@@ -1,5 +1,10 @@
 # **Instalasi dan Konfigurasi ProFTPD di Debian Server**
 
+# Kelompok B6 (Pro FTPD)
+    - Candra Kirana
+    - Ananda Rizky Maulana
+    - Aidil Fikri
+
 ## **Pendahuluan**
 Dokumentasi ini berisi panduan lengkap untuk menginstal, mengonfigurasi, dan menggunakan ProFTPD pada sistem berbasis Debian. ProFTPD adalah perangkat lunak server FTP yang andal untuk menyediakan layanan FTP.
 
