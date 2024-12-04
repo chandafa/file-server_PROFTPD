@@ -1,4 +1,4 @@
-# ✨ **Panduan Instalasi & Konfigurasi ProFTPD di Debian Server**  
+# **Panduan Instalasi & Konfigurasi ProFTPD di Debian Server**  
 
 ## **Dibuat oleh Kelompok B6 :**  
 > 👩‍💻 **Candra Kirana**  
