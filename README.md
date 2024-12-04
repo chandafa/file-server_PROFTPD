@@ -1,55 +1,57 @@
-# **Instalasi dan Konfigurasi ProFTPD di Debian Server**
+# ✨ **Panduan Instalasi & Konfigurasi ProFTPD di Debian Server**  
 
-# Kelompok B6 (Pro FTPD)
-    - Candra Kirana
-    - Ananda Rizky Maulana
-    - Aidil Fikri
-
-## **Pendahuluan**
-Dokumentasi ini berisi panduan lengkap untuk menginstal, mengonfigurasi, dan menggunakan ProFTPD pada sistem berbasis Debian. ProFTPD adalah perangkat lunak server FTP yang andal untuk menyediakan layanan FTP.
+## **Dibuat oleh Kelompok B6 :**  
+> 👩‍💻 **Candra Kirana**  
+> 👨‍💻 **Ananda Rizky Maulana**  
+> 👨‍💻 **Aidil Fikri**  
 
 ---
 
-## **Instalasi**
+## 📋 **Pendahuluan**  
+ProFTPD adalah server FTP yang andal, fleksibel, dan mudah dikonfigurasi untuk menyediakan layanan FTP di sistem berbasis Linux. Dokumentasi ini memberikan panduan langkah demi langkah untuk menginstal, mengonfigurasi, dan menggunakannya pada Debian Server.  
 
-### **Langkah 1: Update Sistem**
-Jalankan perintah berikut untuk memperbarui dan meningkatkan sistem Debian Anda:
+---
+
+## 🚀 **Langkah Instalasi**  
+
+### 🔧 **1. Update Sistem**  
+Perbarui paket sistem untuk memastikan lingkungan Anda siap:  
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
 
-### **Langkah 2: Instal ProFTPD**
-Instal ProFTPD menggunakan manajer paket:
+### 📦 **2. Instal ProFTPD**  
+Jalankan perintah berikut untuk menginstal ProFTPD:  
 ```bash
 sudo apt install proftpd -y
-```
+```  
 
-Selama proses instalasi:
-- Pilih mode **Standalone** ketika diminta.
+**⚙️ Pilihan Mode Instalasi:**  
+Pilih mode **Standalone** saat diminta selama proses instalasi.  
 
-### **Langkah 3: Verifikasi Instalasi**
-Periksa status layanan ProFTPD:
+### ✅ **3. Verifikasi Instalasi**  
+Cek apakah layanan ProFTPD sudah berjalan:  
 ```bash
 sudo systemctl status proftpd
-```
+```  
 
-Jika belum berjalan, aktifkan layanan:
+Jika belum berjalan, jalankan perintah ini untuk memulai dan mengaktifkan layanan secara otomatis:  
 ```bash
 sudo systemctl start proftpd
 sudo systemctl enable proftpd
-```
+```  
 
 ---
 
-## **Konfigurasi**
+## ⚙️ **Konfigurasi ProFTPD**  
 
-### **Langkah 1: Edit File Konfigurasi**
-Buka file konfigurasi ProFTPD:
+### 🛠️ **1. Edit File Konfigurasi**  
+Buka file konfigurasi ProFTPD:  
 ```bash
 sudo nano /etc/proftpd/proftpd.conf
-```
+```  
 
-Lakukan perubahan berikut:
+Tambahkan atau edit pengaturan berikut:  
 ```conf
 # Mengizinkan lebih banyak proses
 MaxInstances 50
@@ -62,8 +64,10 @@ DefaultRoot ~
 
 # Izinkan login tanpa shell yang valid
 RequireValidShell off
+```
 
-# (Opsional) Pengaturan FTP Anonim
+**(Opsional)**: Konfigurasi untuk FTP anonim:  
+```conf
 <Anonymous ~ftp>
   User ftp
   Group nogroup
@@ -77,22 +81,20 @@ RequireValidShell off
 </Anonymous>
 ```
 
-### **Langkah 2: Restart Layanan ProFTPD**
-Setelah mengedit file, restart layanan ProFTPD:
+### 🔄 **2. Restart Layanan**  
+Restart untuk menerapkan perubahan konfigurasi:  
 ```bash
 sudo systemctl restart proftpd
 ```
 
-### **Langkah 3: Buat Pengguna FTP**
-Tambahkan pengguna untuk akses FTP:
+### 👤 **3. Tambahkan Pengguna FTP**  
+Buat pengguna baru untuk akses FTP:  
 ```bash
 sudo adduser ftpserver
-```
+```  
 
-Setel password untuk pengguna selama proses tersebut. Pengguna ini akan memiliki akses ke direktori home-nya untuk FTP.
-
-### **Langkah 4: Buat Direktori FTP (Opsional)**
-Buat direktori khusus untuk file FTP:
+### 📁 **4. Buat Direktori FTP (Opsional)**  
+Atur direktori khusus untuk file pengguna FTP:  
 ```bash
 sudo mkdir /home/ftpserver
 sudo chown ftpserver:ftpserver /home/ftpserver
@@ -100,77 +102,79 @@ sudo chown ftpserver:ftpserver /home/ftpserver
 
 ---
 
-## **Penggunaan**
+## 🌐 **Penggunaan FTP**  
 
-### **Langkah 1: Akses FTP Secara Lokal**
-Untuk menguji server FTP secara lokal, gunakan perintah berikut:
+### ⚙️ **1. Akses FTP Secara Lokal**  
+Gunakan perintah berikut untuk menguji akses FTP lokal:  
 ```bash
 ftp localhost
-```
-- Masukkan username (`ftpserver`) dan password yang telah dibuat.
+```  
 
-### **Langkah 2: Akses FTP dari Perangkat Lain**
-1. **Cek Alamat IP Debian Server:**
+Masukkan **username** dan **password** yang telah Anda buat.  
+
+### 📡 **2. Akses FTP dari Perangkat Lain**  
+1. **Cek IP Server:**  
    ```bash
    ip addr show
    ```
-   - Catat alamat IP server (contoh: `192.168.1.10`).
-
-2. **Atur Jaringan di VirtualBox:**
+2. **Setel Jaringan di VirtualBox:**  
    - Gunakan mode **Bridged Adapter** pada pengaturan jaringan VirtualBox agar server dapat diakses dari perangkat lain.
-
-3. **Buka Port 21 dan 30000 di Firewall (Jika Diperlukan):**
+     
+3. **Buka Port di Firewall (Jika Diperlukan):**  
    ```bash
    sudo ufw allow 21/tcp
    sudo ufw allow 30000:35000/tcp
    sudo ufw reload
-   ```
+   ```  
+4. **Gunakan FTP Client:**  
+- Di perangkat lain, instal aplikasi FTP client seperti **FileZilla** atau **WinSCP**.
+- Hubungkan dengan parameter berikut:  
+   - **Host:** `192.168.x.x` (IP Server)  
+   - **Username:** `ftpserver`
+   - **Password:** (yang telah dibuat)
+   - **Port:** `21`
 
-4. **Gunakan Aplikasi FTP Client:**
-   - Di perangkat lain, instal aplikasi FTP client seperti **FileZilla** atau **WinSCP**.
-   - Hubungkan dengan parameter berikut:
-     - **Host:** `192.168.1.10` (IP Debian Server)
-     - **Username:** `ftpserver`
-     - **Password:** (yang telah dibuat)
-     - **Port:** `21`
-
-### **Langkah 3: Upload dan Download File**
-- **Upload File:** Drag-and-drop file ke direktori server pada aplikasi FTP client.
-- **Download File:** Klik kanan pada file di server dan pilih **Download**.
+### 📡 **3. Upload dan Download File**  
+   - **Upload File:** Drag-and-drop file ke direktori server pada aplikasi FTP client.
+   - **Download File:** Klik kanan pada file di server dan pilih **Download**.
 
 ---
 
-## **Opsional: Aktifkan FTP Aman (FTPS)**
-1. Instal modul TLS:
+## 🔒 **Opsional : Aktifkan FTP Aman (FTPS)**  
+
+1. **Instal Modul TLS:**  
    ```bash
    sudo apt install proftpd-mod-tls
-   ```
+   ```  
 
-2. Konfigurasi TLS:
-   Buka file konfigurasi TLS:
+2. **Konfigurasi TLS:**  
+   Edit file TLS:  
    ```bash
    sudo nano /etc/proftpd/tls.conf
-   ```
-   Atur path sertifikat yang sesuai.
+   ```  
+   Tambahkan path sertifikat SSL Anda.  
 
-3. Restart ProFTPD:
+3. **Restart ProFTPD:**  
    ```bash
    sudo systemctl restart proftpd
-   ```
+   ```  
 
 ---
 
-## **Pemecahan Masalah**
-- **Masalah:** Tidak bisa terhubung dari perangkat lain.
-  - Pastikan adapter jaringan VirtualBox diset ke **Bridged Adapter**.
-  - Periksa alamat IP server dan pastikan port 21 dapat diakses.
+## 💡 **Pemecahan Masalah**  
 
-- **Masalah:** Login gagal.
-  - Periksa kembali username dan password.
-  - Pastikan layanan ProFTPD sedang berjalan.
+| **Masalah**                          | **Solusi**                                                                                   |
+|--------------------------------------|---------------------------------------------------------------------------------------------|
+| Tidak bisa terhubung                 | Pastikan adapter jaringan di VirtualBox diset ke **Bridged Adapter** dan periksa IP server. |
+| Login gagal                          | Verifikasi username dan password. Pastikan layanan ProFTPD sedang berjalan.                 |
+| FTP Client tidak bisa koneksi pasif  | Pastikan port 30000-35000 terbuka di firewall.                                              |
 
 ---
 
-## **Dokumentasi Berhasil**
-![Dokumentasi Berhasil](image.png)
+## 🎉 **Dokumentasi Berhasil**  
+Selamat! Anda telah berhasil menginstal dan mengonfigurasi ProFTPD di Debian Server.  
 
+**Contoh Output:**  
+![Output Berhasil](image.png) 
+
+**Kelompok B6 Mengucapkan Terima Kasih!** 🙌
