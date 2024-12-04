@@ -126,9 +126,9 @@ Masukkan **username** dan **password** yang telah Anda buat.
    sudo ufw allow 30000:35000/tcp
    sudo ufw reload
    ```  
-4. **Gunakan FTP Client:**  
+4. **Gunakan FTP Client:**
 - Di perangkat lain, instal aplikasi FTP client seperti **FileZilla** atau **WinSCP**.
-- Hubungkan dengan parameter berikut:  
+- - Hubungkan dengan parameter berikut:  
    - **Host:** `192.168.x.x` (IP Server)  
    - **Username:** `ftpserver`
    - **Password:** (yang telah dibuat)
