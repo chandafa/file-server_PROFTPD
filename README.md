@@ -134,9 +134,9 @@ Masukkan **username** dan **password** yang telah Anda buat.
   - **Password:** (yang telah dibuat)
   - **Port:** `21`
 
-### 📡 **3. Upload dan Download File**  
-   - **Upload File:** Drag-and-drop file ke direktori server pada aplikasi FTP client.
-   - **Download File:** Klik kanan pada file di server dan pilih **Download**.
+### 📥 **3. Upload dan Download File**  
+  - **Upload File:** Drag-and-drop file ke direktori server pada aplikasi FTP client.
+  - **Download File:** Klik kanan pada file di server dan pilih **Download**.
 
 ---
 
