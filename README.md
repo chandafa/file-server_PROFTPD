@@ -128,11 +128,11 @@ Masukkan **username** dan **password** yang telah Anda buat.
    ```  
 4. **Gunakan FTP Client:**
 - Di perangkat lain, instal aplikasi FTP client seperti **FileZilla** atau **WinSCP**.
-- - Hubungkan dengan parameter berikut:  
-   - **Host:** `192.168.x.x` (IP Server)  
-   - **Username:** `ftpserver`
-   - **Password:** (yang telah dibuat)
-   - **Port:** `21`
+- Hubungkan dengan parameter berikut:  
+   - - **Host:** `192.168.x.x` (IP Server)  
+   - - **Username:** `ftpserver`
+   - - **Password:** (yang telah dibuat)
+   - - **Port:** `21`
 
 ### 📡 **3. Upload dan Download File**  
    - **Upload File:** Drag-and-drop file ke direktori server pada aplikasi FTP client.
