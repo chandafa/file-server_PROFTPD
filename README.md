@@ -119,7 +119,7 @@ ftp localhost
 2. **Atur Jaringan di VirtualBox:**
    - Gunakan mode **Bridged Adapter** pada pengaturan jaringan VirtualBox agar server dapat diakses dari perangkat lain.
 
-3. **Buka Port 21 di Firewall (Jika Diperlukan):**
+3. **Buka Port 21 dan 30000 di Firewall (Jika Diperlukan):**
    ```bash
    sudo ufw allow 21/tcp
    sudo ufw allow 30000:35000/tcp
