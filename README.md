@@ -1,9 +1,9 @@
 # **Panduan Instalasi & Konfigurasi ProFTPD di Debian Server**  
 
 ## **Dibuat oleh Kelompok B6 :**  
-> 👩‍💻 **Candra Kirana**  
-> 👨‍💻 **Ananda Rizky Maulana**  
-> 👨‍💻 **Aidil Fikri**  
+> 👩‍💻 **Candra Kirana (233040037)**  
+> 👨‍💻 **Ananda Rizky Maulana (233040058)**  
+> 👨‍💻 **Aidil Fikri (233040059)**  
 
 ---
 
